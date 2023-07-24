@@ -4,6 +4,7 @@ import { listeners } from "./events"
 
 if(!process.env.NEXT_PUBLIC_PROJECT_ID) throw new Error("Project ID Missing")
 
+/** Init Function */
 async function initProvider(){
   if(typeof window === 'undefined') return /**Avoid running on server side */
 
@@ -23,6 +24,7 @@ async function initProvider(){
 /**Initialize Provider */
 initProvider()
 
+/** Connect & Disconnect Functions */
 export async function handleConnect(){
   const provider = snap.provider()
   if(!provider) throw new Error("Provider has not initialized")
@@ -39,6 +41,7 @@ export async function handleDisconnect(){
   clearSession()
 }
 
+/** Session utils */
 async function fetchAccount(){
   return await snap.provider()?.request<string[]>({
     method: 'eth_accounts'
