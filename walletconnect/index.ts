@@ -1,47 +1,47 @@
 import { set, snap } from "@/store"
 import { EthereumProvider } from "@walletconnect/ethereum-provider"
 import { listeners } from "./events"
+import { addToConsole, getProvider } from "@/utils"
 
 if(!process.env.NEXT_PUBLIC_PROJECT_ID) throw new Error("Project ID Missing")
 
-/** Init Function */
+/* Init Function */
 async function initProvider(){
   if(typeof window === 'undefined') return /**Avoid running on server side */
 
   const provider = await EthereumProvider.init({
     projectId: process.env.NEXT_PUBLIC_PROJECT_ID as string,
+    chains:[1],
     optionalChains:[1, 5, 56, 42161],
+    methods:['eth_signTypedData_v4'],
     showQrModal: true
   })
   if(!provider) throw new Error("Error during initialization")
 
   set.provider(provider)
+  
   if(provider.session) fetchSession()
 
   listeners()
 }
 
-/**Initialize Provider */
+/* Initialize Provider */
 initProvider()
 
-/** Connect & Disconnect Functions */
+/* Connect & Disconnect Functions */
 export async function handleConnect(){
-  const provider = snap.provider()
-  if(!provider) throw new Error("Provider has not initialized")
-
-  await provider.connect()
+  await getProvider().connect()
   .then(fetchSession).catch(console.warn)
 }
 
 export async function handleDisconnect(){
-  const provider = snap.provider()
-  if(!provider) throw new Error("Provider is not defined")
+  const provider = getProvider()
   
   if(provider.session) await provider.disconnect()
   clearSession()
 }
 
-/** Session utils */
+/* Session utils */
 async function fetchAccount(){
   return await snap.provider()?.request<string[]>({
     method: 'eth_accounts'
@@ -59,6 +59,7 @@ async function fetchSession(){
     fetchAccount(),
     fetchChainId()
   ])
+  addToConsole(snap.provider()?.session?.namespaces)
   set.address(accounts?.[0]), set.chainId(Number(chainId))
 }
 

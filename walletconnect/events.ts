@@ -1,25 +1,26 @@
 import { snap } from "@/store";
 import { clearSession } from ".";
+import { addToConsole } from "@/utils";
 
 /**handlers */
 export const handle = {
-  disconnect(e: unknown){
-    console.log("connect",e), clearSession()
+  disconnect(detail: unknown){
+    addToConsole({event: "connect",detail}), clearSession()
   },
-  connect(e: unknown){
-    console.log("connect",e)
+  connect(detail: unknown){
+    addToConsole({event: "connect",detail})
   },
-  chainChanged(e: unknown){
-    console.log("chainChanged",e)
+  chainChanged(detail: unknown){
+    addToConsole({event: "chainChanged",detail})
   },
-  accountsChanged(e: unknown){
-    console.log("accountsChanged",e)
+  accountsChanged(detail: unknown){
+    addToConsole({event: "accountsChanged",detail})
   },
-  sessionEvent(e: unknown){
-    console.log("sessionEvent",e)
+  sessionEvent(detail: unknown){
+    addToConsole({event: "sessionEvent",detail})
   },
-  displayUri(e: unknown){
-    console.log("displayUri",e)
+  displayUri(detail: unknown){
+    addToConsole({event: "displayUri",detail})
   },
 }
 
