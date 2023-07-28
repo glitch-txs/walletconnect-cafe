@@ -8,6 +8,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', sans-serif;
 }
 
 body {
@@ -18,4 +19,19 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button{
+  background-color: #3396ff;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+  padding: 0px 15px 1px;
+  height: 40px;
+  border-radius: 10px;
+
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
 }

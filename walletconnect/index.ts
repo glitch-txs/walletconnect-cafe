@@ -11,14 +11,12 @@ async function initProvider(){
 
   const provider = await EthereumProvider.init({
     projectId: process.env.NEXT_PUBLIC_PROJECT_ID as string,
-    chains:[1],
     optionalChains:[1, 5, 56, 42161],
-    methods:['eth_signTypedData_v4'],
     showQrModal: true
   })
   if(!provider) throw new Error("Error during initialization")
 
-  set.provider(provider)
+  set.provider(provider), set.status(undefined)
   
   if(provider.session) fetchSession()
 
@@ -30,15 +28,17 @@ initProvider()
 
 /* Connect & Disconnect Functions */
 export async function handleConnect(){
+  set.status('Connecting')
   await getProvider().connect()
   .then(fetchSession).catch(console.warn)
+  set.status(undefined)
 }
 
 export async function handleDisconnect(){
   const provider = getProvider()
-  
+  set.status('Disconnecting')
   if(provider.session) await provider.disconnect()
-  clearSession()
+  clearSession(), set.status(undefined)
 }
 
 /* Session utils */
@@ -59,7 +59,7 @@ async function fetchSession(){
     fetchAccount(),
     fetchChainId()
   ])
-  addToConsole(snap.provider()?.session?.namespaces)
+  addToConsole(snap.provider()?.session?.namespaces), addToConsole(snap.provider()?.session?.peer)
   set.address(accounts?.[0]), set.chainId(Number(chainId))
 }
 
