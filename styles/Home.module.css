@@ -41,3 +41,16 @@
   padding: 10px;
   border-radius: 20px;
 }
+
+@media(max-width:641px){
+  .main{
+    flex-direction: column;
+  }
+  .controls, .console{
+    height: 45vh;
+    width: 90%;
+  }
+  .console pre{
+    font-size: 17px;
+  }
+}
