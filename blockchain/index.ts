@@ -1,0 +1,1 @@
+export { signTypeDataV4 } from './signatures'

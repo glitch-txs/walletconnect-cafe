@@ -1,5 +1,6 @@
 import { snap } from "@/store";
-import { addToConsole, getProvider } from "@/utils";
+import { addToConsole } from "@/utils";
+import { getProvider } from "@/walletconnect";
 
 export async function signTypeDataV4(){
   const signature = await getProvider().request({

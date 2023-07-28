@@ -4,53 +4,11 @@
   align-items: center;
   gap: 1rem;
   width: 100%;
-  min-height: 100vh;
-}
-.controls{
-  display: flex;
-  flex-direction: column;
-  justify-content:center;
-  align-items: center;
-  gap: 1rem;
-  width: 50%;
   height: 100vh;
-}
-.console{
-  width: 50%;
-  overflow-y: auto;
-  height: 90vh;
-  margin: 20px;
-}
-.console::-webkit-scrollbar {
-  width: 9px;
-  height: 9px;
-  background: #181818;
-}
-.console::-webkit-scrollbar-thumb {
-  background: #fff;
-  border-radius: 8px;
-}
-.console pre{
-  color: #fff;
-  font-family: monospace;
-  font-size: 18px;
-  margin: 1rem;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  background-color: #202020;
-  padding: 10px;
-  border-radius: 20px;
 }
 
 @media(max-width:641px){
   .main{
     flex-direction: column;
-  }
-  .controls, .console{
-    height: 45vh;
-    width: 90%;
-  }
-  .console pre{
-    font-size: 17px;
   }
 }

@@ -1,4 +1,4 @@
-import { set, snap } from "@/store";
+import { set } from "@/store";
 
 /* Console Functions */
 export function addToConsole(log: unknown){
@@ -11,11 +11,4 @@ export function clearConsole(){
 
 export function logMessage(e: { message: string }){
   addToConsole(e.message)
-}
-
-/* Secure provider */
-export function getProvider(){
-  const provider = snap.provider()
-  if(!provider) throw new Error("Provider has not initialized")
-  return provider
 }

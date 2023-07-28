@@ -1,26 +1,9 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
-import { snap, states } from '@/store'
-import { handleConnect, handleDisconnect } from '@/walletconnect'
-import { signTypeDataV4 } from '@/blockchain/signatures'
-import { useEffect, useRef } from 'react'
-
-const connectHTML = <button onClick={handleConnect} >Connect</button>
-const disconnectHTML = <button onClick={handleDisconnect} >Disconnect</button>
+import Controls from '@/components/controls'
+import Console from '@/components/console'
 
 export default function Home() {
-
-  const address = states.address()
-  const chainId = states.chainId()
-  const logs = states.console()
-  
-  const logsRef = useRef<HTMLDivElement>(null)
-
-  useEffect(()=>{
-    if(logsRef.current)
-    logsRef.current.scrollIntoView({behavior: 'smooth'})
-  }, [logs])
-
   return (
     <>
       <Head>
@@ -30,20 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div className={styles.controls}>
-          {address ? disconnectHTML : connectHTML}        
-          <span>address: {address}</span>
-          <span>chain ID: {chainId}</span>
-          {address && <button onClick={signTypeDataV4} >Sign Type Data v4</button>}
-        </div>
-        <div className={styles.console} >
-          {
-            logs?.map((log: string, i: number)=>(
-              <pre key={i} >{log}</pre>
-            ))
-          }
-          <div ref={logsRef}/>
-        </div>
+        <Controls/><Console/>
       </main>
     </>
   )

@@ -1,6 +1,6 @@
 import { snap } from "@/store";
-import { clearSession } from ".";
 import { addToConsole } from "@/utils";
+import { clearSession } from "./utils";
 
 /**handlers */
 export const handle = {

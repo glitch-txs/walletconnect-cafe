@@ -1,0 +1,16 @@
+.controls{
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  gap: 1rem;
+  width: 50%;
+  height: 100vh;
+}
+
+@media(max-width:641px){
+  .controls{
+    height: 45vh;
+    width: 90%;
+  }
+}
