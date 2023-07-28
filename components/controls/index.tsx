@@ -2,7 +2,7 @@ import { states } from '@/store'
 import React from 'react'
 import s from './styles.module.css'
 import { handleConnect, handleDisconnect } from '@/walletconnect'
-import { signTypeDataV4 } from '@/blockchain'
+import Blockchain from '../blockchain'
 
 const connectHTML = <button onClick={handleConnect} >Connect</button>
 const disconnectHTML = <button onClick={handleDisconnect} >Disconnect</button>
@@ -21,7 +21,7 @@ const Controls = () => {
       <span>address: {address}</span>
       <span>chain ID: {chainId}</span>
 
-      {address && <button onClick={signTypeDataV4} >Sign Type Data v4</button>}
+      {address && <Blockchain/>}
     </div>
   )
 }
