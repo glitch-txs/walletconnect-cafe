@@ -14,7 +14,6 @@ async function initProvider(){
     optionalChains:[1, 5, 56, 42161],
     showQrModal: true
   }).catch(logMessage)
-  if(!provider) throw new Error("Error during initialization")
 
   set.provider(provider), set.status(undefined)
   
