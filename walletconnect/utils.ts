@@ -7,8 +7,6 @@ import { listeners } from "./events"
 /* Init Function */
 export async function initProvider(){
   if(typeof window === 'undefined') return /* Avoid running on server side */
-  if(!process.env.NEXT_PUBLIC_PROJECT_ID) throw new Error("Project ID Missing")
-  
   const provider = await EthereumProvider.init(config).catch(logMessage)
 
   set.provider(provider), set.status(undefined), listeners()

@@ -27,9 +27,8 @@ export const handle = {
 /**Listeners */
 export function listeners(){
   const provider = snap.provider()
-
-  if(!provider) throw new Error("Listeners could not initialize, provider is undefined")
-
+  if(!provider) return
+  
   provider.on('chainChanged', handle.chainChanged)
   provider.on('accountsChanged', handle.accountsChanged)
   provider.on('connect', handle.connect)
