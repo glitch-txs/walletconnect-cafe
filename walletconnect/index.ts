@@ -1,7 +1,7 @@
 import { set, snap } from "@/store"
 import { EthereumProvider } from "@walletconnect/ethereum-provider"
 import { listeners } from "./events"
-import { addToConsole, getProvider } from "@/utils"
+import { addToConsole, getProvider, logMessage } from "@/utils"
 
 if(!process.env.NEXT_PUBLIC_PROJECT_ID) throw new Error("Project ID Missing")
 
@@ -13,7 +13,7 @@ async function initProvider(){
     projectId: process.env.NEXT_PUBLIC_PROJECT_ID as string,
     optionalChains:[1, 5, 56, 42161],
     showQrModal: true
-  })
+  }).catch(logMessage)
   if(!provider) throw new Error("Error during initialization")
 
   set.provider(provider), set.status(undefined)
@@ -30,7 +30,7 @@ initProvider()
 export async function handleConnect(){
   set.status('Connecting')
   await getProvider().connect()
-  .then(fetchSession).catch(console.warn)
+  .then(fetchSession).catch(logMessage)
   set.status(undefined)
 }
 

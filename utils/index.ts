@@ -9,6 +9,10 @@ export function clearConsole(){
   set.console([])
 }
 
+export function logMessage(e: { message: string }){
+  addToConsole(e.message)
+}
+
 /* Secure provider */
 export function getProvider(){
   const provider = snap.provider()

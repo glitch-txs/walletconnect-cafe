@@ -27,11 +27,11 @@
   background: #181818;
 }
 .console::-webkit-scrollbar-thumb {
-  background: green;
+  background: #fff;
   border-radius: 8px;
 }
 .console pre{
-  color: green;
+  color: #fff;
   font-family: monospace;
   font-size: 18px;
   margin: 1rem;
