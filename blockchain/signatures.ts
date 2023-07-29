@@ -9,7 +9,7 @@ export async function signTypeDataV4(){
       snap.address(),
       JSON.stringify({
         domain: {
-          chainId: 1,
+          chainId: snap.chainId(),
           name: 'Ether Mail',
           verifyingContract: '0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC',
           version: '1',
