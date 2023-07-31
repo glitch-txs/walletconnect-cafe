@@ -12,3 +12,10 @@ export function clearConsole(){
 export function logMessage(e: { message: string }){
   addToConsole(e.message)
 }
+
+/* local Storage */
+
+export function clearStorage(){
+  localStorage.clear()
+  window.location.reload()
+}

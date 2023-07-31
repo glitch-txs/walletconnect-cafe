@@ -8,6 +8,16 @@
   height: 100vh;
 }
 
+.storage{
+  background-color: #303030;
+  position: absolute;
+  top: 20px;
+}
+
+.storage:hover{
+  background-color: #343434;
+}
+
 @media(max-width:641px){
   .controls{
     height: 45vh;
