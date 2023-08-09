@@ -3,6 +3,7 @@ import React from 'react'
 import s from './styles.module.css'
 import { handleConnect, handleDisconnect } from '@/walletconnect'
 import Blockchain from '../blockchain'
+import { clearStorage } from '@/utils'
 
 const connectHTML = <button onClick={handleConnect} >Connect</button>
 const disconnectHTML = <button onClick={handleDisconnect} >Disconnect</button>
@@ -22,6 +23,10 @@ const Controls = () => {
       <span>chain ID: {chainId}</span>
 
       {address && <Blockchain/>}
+
+      <button onClick={clearStorage} className={s.storage}>
+        Clear Local Storage
+      </button>
     </div>
   )
 }

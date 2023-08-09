@@ -8,7 +8,7 @@ const Console = () => {
 
   return (
     <div className={s.console} >
-      {logs?.map((log: string, i: number)=><pre key={i} >{log}</pre>)}
+      {logs.map((log: string, i: number)=><pre key={i} >{log}</pre>)}
       <ScrollToView trigger={logs}/>
     </div>
   )

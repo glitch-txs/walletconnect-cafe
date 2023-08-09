@@ -1,4 +1,4 @@
-//@ts-nocheck
+//@ts-ignore
 import { EthereumProviderOptions } from '@walletconnect/ethereum-provider/dist/types/EthereumProvider'
 
 if(!process.env.NEXT_PUBLIC_PROJECT_ID) throw new Error("Project ID Missing")
