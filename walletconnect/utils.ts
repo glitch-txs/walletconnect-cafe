@@ -54,6 +54,15 @@ export function clearSession(){
   set.address(undefined), set.chainId(undefined)  
 }
 
+/** Switch chain */
+export async function switchChain(chainId: number){
+  console.log(snap.provider())
+  const a = await snap.provider()?.request<number|string>({
+    method:'wallet_switchEthereumChain', params:[{ chainId:'0x1' }]
+  })
+  console.log(a)
+}
+
 /* Secure provider */
 export function getProvider(){
   const provider = snap.provider()
