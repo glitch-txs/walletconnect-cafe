@@ -1,11 +1,16 @@
 import { signTypeDataV4 } from '@/blockchain'
 import React from 'react'
-import s from './styles.module.css'
+import { switchChain } from '@/blockchain/switchChain'
+import { bsc, mainnet } from '@/chains'
+import { fetchSession } from '@/walletconnect/utils'
 
 const Blockchain = () => {
   return (
     <div>
       <button onClick={signTypeDataV4} >Sign Type Data v4</button>
+      <button onClick={()=>switchChain(mainnet)} >Switch to mainnet</button>
+      <button onClick={()=>switchChain(bsc)} >Switch to BSC</button>
+      <button onClick={fetchSession} >fetchSession</button>
     </div>
   )
 }
