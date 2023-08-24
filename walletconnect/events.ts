@@ -1,4 +1,4 @@
-import { snap } from "@/store";
+import { set, snap } from "@/store";
 import { addToConsole } from "@/utils";
 import { clearSession } from "./utils";
 
@@ -11,9 +11,11 @@ export const handle = {
     addToConsole({event: "connect",detail})
   },
   chainChanged(detail: unknown){
+    set.chainId(Number(detail))
     addToConsole({event: "chainChanged",detail})
   },
-  accountsChanged(detail: unknown){
+  accountsChanged(detail: string[]){
+    set.address(detail[0])
     addToConsole({event: "accountsChanged",detail})
   },
   sessionEvent(detail: unknown){
