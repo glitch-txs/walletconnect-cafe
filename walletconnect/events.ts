@@ -1,6 +1,6 @@
 import { set, snap } from "@/store";
 import { addToConsole } from "@/utils";
-import { clearSession } from "./utils";
+import { clearSession, fetchSession } from "./utils";
 
 /**handlers */
 export const handle = {
@@ -20,6 +20,7 @@ export const handle = {
   },
   sessionEvent(detail: unknown){
     addToConsole({event: "sessionEvent",detail})
+    fetchSession()
   },
   displayUri(detail: unknown){
     addToConsole({event: "displayUri",detail})
