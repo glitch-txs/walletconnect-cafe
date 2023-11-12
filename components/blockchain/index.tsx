@@ -3,6 +3,7 @@ import React from 'react'
 import { switchChain } from '@/blockchain/switchChain'
 import { bsc, mainnet } from '@/chains'
 import { fetchSession } from '@/walletconnect/utils'
+import { approve } from '@/blockchain/approve'
 
 const Blockchain = () => {
   return (
@@ -11,6 +12,7 @@ const Blockchain = () => {
       <button onClick={()=>switchChain(mainnet)} >Switch to mainnet</button>
       <button onClick={()=>switchChain(bsc)} >Switch to BSC</button>
       <button onClick={fetchSession} >fetchSession</button>
+      <button onClick={approve} >Approve</button>
     </div>
   )
 }
