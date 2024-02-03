@@ -8,6 +8,10 @@ export async function switchChain(chain:Chain){
     return
   }
   await provider.request({
+    method: 'wallet_addEthereumChain',
+    params: [ chain ],
+  })
+  await provider.request({
     method: 'wallet_switchEthereumChain',
     params: [{ chainId: chain.chainId }],
   }).catch(async (er: any)=>{

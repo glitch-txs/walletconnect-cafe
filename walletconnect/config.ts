@@ -3,6 +3,6 @@ import { EthereumProviderOptions } from '@walletconnect/ethereum-provider/dist/t
 
 export const config = {
   projectId: "bd4997ce3ede37c95770ba10a3804dad",
-  optionalChains:[2020 ,2021],
+  optionalChains:[1, 5, 137, 2020 ,2021, 56],
   showQrModal: true
 } satisfies EthereumProviderOptions
